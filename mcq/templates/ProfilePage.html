@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+    .table_design {
+        font-family: 'Courier New', Courier, monospace; 
+        text-align: center;
+        font-size: 105%;
+        font-weight: 600; 
+    }
+
+
+</style>
+
+
+<div class="container table_design mt-3">
+    <div class="row p-2 shadow-sm bg-body-tertiary rounded">
+        <div class="col-md-4">
+            {% if request.user.picture %}
+            <img src="{{request.user.picture.url}}" height=180 width=180 class="mx-auto d-block my-3 shadow-sm"
+                style="border-radius: 4%;">
+
+            {% else %} 
+            {% load static %}
+            <img src="{% static '../../static/image/bird_logo.jpg' %}" width="180" height="180"
+            class="mx-auto d-block my-3 shadow-sm" style="border-radius: 4%">
+            {% endif %}
+        </div>
+
+        <div class="col-md-8 d-flex justify-content-center">
+            <table class="table mt-3 shadow-sm">
+                <tbody>
+                    <tr>
+                        <td style = "color: gray"> User </td>
+                        {% if request.user.user_type %} 
+                        <td style = "color: gray"> Student </td>
+                        {% elif request.user.user_type == False%} 
+                        <td style = "color: gray"> Teacher </td>
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td style = "color: gray"> Username </td>
+                        <td style = "color: gray"> {{request.user.username}} </td>
+                    </tr>
+
+                    <tr>
+                        <td style = "color: gray"> First Name </td>
+                        <td style = "color: gray"> {{request.user.first_name}} </td>
+                    </tr>
+
+                    <tr>
+                        <td style = "color: gray"> Last Name </td>
+                        <td style = "color: gray"> {{request.user.last_name }} </td>
+                    </tr>
+
+                    <tr>
+                        <td style = "color: gray"> Phone Number </td>
+                        <td style = "color: gray"> {{request.user.phone }} </td>
+                    </tr>
+
+                    <tr>
+                        <td style = "color: gray"> Gender </td>
+                        <td style = "color: gray"> {{request.user.gender }} </td>
+                    </tr>
+                    <tr>
+                        <td style = "color: gray"> Address </td>
+                        <td style = "color: gray"> {{request.user.address}} </td>
+                    </tr>
+                    <tr>
+                        <td style = "color: gray"> Country </td>
+                        <td style = "color: gray"> {{request.user.country}} </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+
+<a href = "{% url 'update-profile' %}" style="width: 100%;
+display: block;  border: 1px solid #D3D3D3;
+height: 40px; border-radius: 40px; font-family: courier new;
+font-size: 120%; font-weight: bolder; text-align: center; 
+text-decoration: none; padding: 6px;
+color: gray";
+class = "shadow-sm bg-body-tertiary"> Update Profile </a>
+
+</div>
+
+{% endblock %}

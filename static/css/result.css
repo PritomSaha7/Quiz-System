@@ -1,0 +1,16 @@
+
+.table-design {
+  font-family: 'Courier New', Courier, monospace; 
+  /*text-align: center;
+  font-size: 110%;
+  font-weight: bold; */
+}
+
+.result-design {
+  height: 60px;
+  text-align: center;
+  text-shadow: 1px 1px 1px red;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace; 
+  font-size: 110%;
+}

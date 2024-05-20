@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+  .result_design {
+    height: 60px;
+    text-align: center;
+    text-shadow: 1px 1px 1px blue;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 110%;
+    color: #D3D3D3;
+}
+
+.table_design {
+  font-family: 'Courier New', Courier, monospace; 
+  text-align: center;
+  font-size: 110%;
+}
+
+
+</style>
+
+<div class="container">
+    <div class="container result_design">
+        <h3 class="p-3"> QuizTest History </h3>
+    </div>
+</div>
+
+<div class="container table_design ml-1 mr-1 mt-3">
+    <div class="row shadow-sm bg-body-tertiary rounded p-5">
+      <table class="table table-bordered col-sm-12">
+        <thead>
+            <tr>
+              <th scope="col">Test</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Date-Time</th>
+              <th scope="col">Marks</th>
+              <th scope="col">Percentage</th>
+              <th scope="col">Grade</th>
+            </tr>
+        </thead>
+
+        <tbody>
+          {% for it in result %}
+            <tr>
+             <td> {{forloop.counter}} </td>
+             <td> {{it.SubjectName}} </td>
+             <td> {{it.created_at}} </td>
+             <td> {{it.CntCorrectAns}} Out of {{it.CntQuestion}}</td>
+             <td> {{it.SuccessRate}}% </td>
+             <td> {{it.Grade}} </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}

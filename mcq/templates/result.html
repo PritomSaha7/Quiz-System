@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+
+  .result_design {
+    height: 60px;
+    text-align: center;
+    text-shadow: 1px 1px 1px blue;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 110%;
+    color: #D3D3D3;
+}
+
+</style>
+
+<div class="container">
+  <div class="container result_design">
+    <h3 class="p-3"> Result Sheet </h3>
+  </div>
+</div>
+
+<div class="container d-flex justify-content-center table-design">
+  <div class="container shadow-sm bg-body-tertiary rounded p-5 mt-3">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td> Total number of questions </td>
+          <td> {{cnt_question}} </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td> Correct answer </td>
+          <td> {{cnt_rightanswer}} </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td> Wrong answer </td>
+          <td> {{cnt_wronganswer}} </td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td> Success rate </td>
+          <td> {{success_rate}}% </td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td> Grade </td>
+          <td> {{grade}} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

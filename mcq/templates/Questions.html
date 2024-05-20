@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class = "container">
+    <form action = "calc-result" method = POST style = "font-size: 100%; font-family: courier new">
+        {% csrf_token %}
+        {% for loop in question %}
+        <ul class="list-group shadow-sm p-0 m-3 bg-white rounded">
+            <li class="list-group-item bg-body-tertiary" style = "
+            font-size: 110%; font-weight: bold"> {{forloop.counter}}. {{loop.question}} </li>
+        
+            <li class="list-group-item">
+                <input type = "radio" name = "{{loop.question}}" value = "{{loop.option_a}}">
+                 {{loop.option_a}}
+            </li>
+        
+            <li class="list-group-item">
+                <input type = "radio" name = "{{loop.question}}" value = "{{loop.option_b}}">
+                {{loop.option_b}}
+            </li>
+        
+            <li class="list-group-item">
+                <input type = "radio" name = "{{loop.question}}" value = "{{loop.option_c}}">
+                {{loop.option_c}}
+            </li>
+        
+            <li class="list-group-item">
+                <input type = "radio" name = "{{loop.question}}" value = "{{loop.option_d}}">
+                {{loop.option_d}}
+            </li>
+
+            {% if user.is_authenticated and user.user_type == False %}
+            <li class="list-group-item bg-body-tertiary">
+                <a href = "{% url 'update-question' loop.id%}" class = "btn btn-md shadow-none bg-white rounded" style = "font-family: courier new; width: 80px;
+                border: 1px solid #D3D3D3; font-weight: bold; color: gray;"> Update </a>
+                <a href = "{% url 'delete-question' loop.id%}" class = "btn btn-md shadow-none bg-white rounded" style = "font-family: courier new; width: 80px;
+                    border: 1px solid #D3D3D3; font-weight: bold; color: gray;"> Delete </a>
+            </li>
+            {% endif %}
+        
+        </ul>
+
+        {% endfor %}
+
+        <input type="hidden" name="subject" value="{{subject}}"/>
+{% if user.is_authenticated %}
+
+        <div class="container mt-4">
+
+        <input type = "submit" value = "Submit" style="width: 100%;
+        display: block;  border: 1px solid #D3D3D3;
+        height: 40px; border-radius: 40px; font-family: courier new;
+        font-size: 120%; font-weight: bolder; text-align: center; 
+        text-decoration: none; padding: 6px;
+        color: gray";
+        class = "shadow-sm bg-body-tertiary">
+               
+        </div>
+{% endif %}
+    </form>
+</div>
+
+{% endblock %}

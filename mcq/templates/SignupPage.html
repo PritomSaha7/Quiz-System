@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .text-design {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 110%;
+        font-weight: bold;
+        color: gray;
+    }
+
+    .width-design {
+        width: 460px;
+    }
+    .alart-text-design {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 100%;
+        font-weight: bold;
+        color: red;
+        padding: 4px;
+        text-align: center;
+    }
+    .result_design {
+        height: 60px;
+        text-align: center;
+        text-shadow: 1px 1px 1px blue;
+        font-weight: bold;
+        font-family: 'Courier New', Courier, monospace; 
+        font-size: 110%;
+        color: #D3D3D3;
+    }
+</style>
+
+<div class="container result_design px-3 mt-1 mb-1">
+    <h3 class="p-2"> Registration Page </h3>
+</div>
+
+{% if messages %}
+<div class="container alart-text-design width-design alert alert alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+    <strong style="font-family: courier new; font-weight: bold">{{ message }}</strong> <br>
+    {% endfor %} 
+</div>
+{% endif %}
+
+
+
+<div class="container shadow bg-body-tertiary rounded p-5 text-design width-design">
+    <form action="" method=POST enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div>
+            <label for="exampleInputEmail1" class="form-label"> User </label>
+        </div>
+        <div class="mb-3 form-control">
+            {% for it in form.user_type %}
+               {{ it }} <br>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"> Username </label>
+            <div> {{form.username}}</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"> First Name </label>
+            <div> {{form.first_name}}</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"> Last Name </label>
+            <div> {{form.last_name}}</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"> Image </label>
+            <div> {{form.picture}} </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"> Phone Number </label>
+            <div> {{form.phone}} </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"> Gender </label>
+            <div> {{form.gender}} </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"> Address </label>
+            <div> {{form.address}} </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"> Country </label>
+            <div> {{form.country}} </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <div> {{form.password1}} </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+            <div> {{form.password2}} </div>
+        </div>
+
+        <input type="submit" value="Submit" style="width: 100%;
+        display: block;  border: 0px solid white; padding: 3px;
+        margin-bottom: 7px; height: 40px; border-radius: 40px;
+        font-size: 105%; font-weight: bolder;
+        background-color: #D3D3D3; color: black">
+
+    </form>
+
+</div>
+
+{% endblock %}

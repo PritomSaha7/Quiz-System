@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid d-flex flex-column justify-content-center">
+    <div class = "row">
+       <div class = "col-lg-6 d-flex flex-column justify-content-center">
+          <h1 style = "font-family: Courier New; font-weight: bold; margin: 30px;
+          text-align: center; color: #D3D3D3; text-shadow: 1px 1px 1px blue;"> 
+             Test Your Knowledge With QuizTest </h1>
+       </div>
+       
+       <div class = "col-sm-12 col-lg-6 d-flex flex-column justify-content-center" style = "margin-top: 50px">
+          <img src="{% static '../../static/image/homepage_image.avif' %}" alt="" style = "border-radius: 50%;" class = "design-animation">
+      </div>
+    </div>
+ </div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg fw-bold fs-5 sticky-top shadow-sm bg-body-tertiary;" style="
+font-family:'Courier New', Courier, monospace;">
+    <div class="container-fluid">
+        {% load static %}
+        <img src="{% static '../../static/image/bird_logo.jpg' %}" width="50" height="50"
+            class="d-inline-block align-top" alt="" style="border-radius: 50%">
+        <a class="navbar-brand" style="font-family: cursive; font-size: 100%;
+        margin-left: 5px;"> QuizTest </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link hover-design" href="{% url 'home-page' %}"> Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hover-design" href="{% url 'all-subjects' %}"> QuizSet </a>
+                </li>
+                {% if user.is_authenticated and user.user_type == False %}
+                <li class="nav-item">
+                    <a class="nav-link hover-design" href="{% url 'set-quiz' %}"> SetQuiz </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                {% if request.user.is_authenticated %}
+                <div class="dropdown">
+                    <a href = "" class="dropbtn">{{user}}</a>
+                    <div class="dropdown-content">
+                    <a href="{% url 'profile-page' %}"> Profile </a>
+                    <a href="{% url 'result-history' %}"> History </a>
+                    </div>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link hover-design" href="{% url 'log-out' %}"> Logout </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link hover-design" href="{% url 'log-in' %}"> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hover-design" href="{% url 'sign-up' %}"> Register </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
